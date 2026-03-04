@@ -1,0 +1,12 @@
+# Claude Code のローカル設定（個人用・gitに入れない）
+.claude/settings.local.json
+CLAUDE.local.md
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# エディタ
+.vscode/
+.idea/
