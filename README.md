@@ -1,319 +1,170 @@
-# Claude Code Starter Kit
+# AntiGravity Workspace for Content & Automation
 
-Claude Code を最大限活用するための「最小構成テンプレート」。
+この workspace は、Google AntiGravity に「共通ルール」と「業務ごとの実務ディレクトリ」を分けて読ませるための作業場所です。
 
-## 使い方（3ステップ）
+いまのメイン用途は、`projects/udemy/` を使って Udemy講座に関する投稿を再現性高く作ることです。
 
-### Step 1: このフォルダをコピー
+## このディレクトリで何をするか
 
-自分のプロジェクトフォルダに、このフォルダの中身をまるごとコピーする。
+- 共通ルールを root に置く
+- 共有の知識を `knowledge/` に置く
+- 業務ごとの実務ファイルを `projects/` 配下に分ける
+- 投稿案や制作ログを、後から見返せる形で保存する
 
-```bash
-# 例: 自分のプロジェクトフォルダにコピー
-cp -r ~/Desktop/claude-code-starter-kit/* ~/my-project/
-cp -r ~/Desktop/claude-code-starter-kit/.* ~/my-project/  # 隠しファイルも
+## まず覚える 3 つ
+
+1. `GEMINI.md`
+   - この workspace 全体の共通ルールです
+   - 最初にここを見れば「何を読むべきか」が分かります
+2. `knowledge/`
+   - 共有で使う知識置き場です
+   - 基本は参照用で、日常的な編集場所ではありません
+3. `projects/udemy/`
+   - 今回メインで使う Udemy 投稿制作の実務ディレクトリです
+   - 実際に投稿案を作るときは、ここを中心に使います
+4. `memory_bank/report/`
+   - AI が何を見て、どう判断したかを確認する場所です
+
+## 全体の見取り図
+
+```text
+gami-antigravity/
+├── GEMINI.md                  # workspace 全体の共通ルール
+├── AGENTS.md                  # 人間向けの短い地図
+├── .agents/
+│   ├── rules/                 # 共通 rules と補助 rules
+│   ├── workflows/             # 業務別の進め方
+│   └── skills/                # 再利用する定型スキル
+├── knowledge/                 # 共有 knowledge
+├── projects/
+│   └── udemy/                 # Udemy 投稿制作の実務層
+├── memory_bank/               # repo 改修の plan / report
+└── assets/                    # 画像や書き出し
 ```
 
-### Step 2: Claude Code を起動
-
-プロジェクトフォルダで Claude Code を起動する。
-
-```bash
-cd ~/my-project
-claude
-```
-
-### Step 3: セットアップウィザードを実行
-
-Claude Code の中で以下を入力する:
-
-```
-/setup-wizard
-```
-
-あとは AI との対話に答えていくだけ。
-5つのレベルをクリアすると、自分専用の設定が完成する。
-
-## レベル一覧
-
-| Lv | やること | 生成されるファイル |
-|----|---------|-----------------|
-| 1 | プロジェクトの自己紹介 | `CLAUDE.md` を更新 |
-| 2 | AIのキャラを決める | `.claude/rules/02-style.md` |
-| 3 | 最初のスキルを作る | `.claude/skills/{名前}/SKILL.md` |
-| 4 | 作業ログの仕組みを知る | `memory_bank/` の使い方 |
-| 5 | 仕上げチェック | 全体の整合性を確認 |
-
-## フォルダ構成の説明
-
-```
-your-project/
-├── CLAUDE.md                     # プロジェクトの指示書（最重要）
-├── CLAUDE.local.md               # 個人用の指示（gitに入れない）
-├── .claude/
-│   ├── rules/                    # 自動適用されるルール
-│   │   ├── 01-safety.md          # 安全ルール（捏造禁止・PII保護等）
-│   │   ├── 03-tool-tips.md       # ツールの使い方と制限
-│   │   ├── 04-memory-routing.md  # メモリの整理ルール
-│   │   ├── 05-quality-check.md   # セルフチェックの習慣
-│   │   └── 10-skill-design-guide.md # スキル設計ガイド
-│   ├── agents/                   # 専門エージェント（7個同梱）
-│   │   ├── brain.md              # 意思決定OS（指揮官エージェント）
-│   │   ├── brain-knowledge.md    # Brain用の判断ナレッジベース
-│   │   ├── brain-manual.md       # Brainの使い方マニュアル
-│   │   ├── security-reviewer.md  # セキュリティレビュー
-│   │   ├── code-reviewer.md      # コードレビュー
-│   │   ├── researcher.md         # リサーチ・調査
-│   │   ├── writer.md             # コンテンツ執筆
-│   │   ├── strategist.md         # 意思決定パートナー（軽量版）
-│   │   └── weekly-coach.md       # 週次振り返りコーチ
-│   ├── skills/                   # スラッシュコマンドで呼べるスキル（19個同梱）
-│   │   ├── setup-wizard/         # セットアップウィザード
-│   │   ├── plan/                 # 計画書を作る
-│   │   ├── report/               # 実装レポートを作る
-│   │   ├── review/               # コード/文章をレビュー
-│   │   ├── daily-log/            # 日次の作業ログ（勤務報告）
-│   │   ├── todo/                 # タスク管理
-│   │   ├── brainstorm/           # アイデア出し（8つのフレームワーク）
-│   │   ├── hook/                 # フック案を10個生成（H1〜H8型）
-│   │   ├── seo-optimize/         # SEO最適化（キーワード分析〜改善）
-│   │   ├── content-extraction/   # 長文→マルチ媒体コンテンツ抽出
-│   │   ├── presentation-builder/ # スライド構成を設計
-│   │   ├── create-pptx/          # PowerPoint自動生成
-│   │   ├── competitive-watch/    # 競合ウォッチ（定期スキャン）
-│   │   ├── customer-interview/   # 顧客インタビュー（ペルソナ対話）
-│   │   ├── reply-draft/          # 返信案を3パターン生成
-│   │   ├── coach/                # 週次1on1振り返りコーチ
-│   │   ├── fix-issue/            # GitHubイシュー修正ガイド
-│   │   ├── skill-audit/          # スキルの健全性を監査
-│   │   └── playwright-cli/       # ブラウザ操作の自動化（テスト・スクショ・データ抽出）
-│   └── settings.local.json       # Claude Codeの権限設定
-├── memory_bank/                  # 作業ログ（AIの記憶の代わり）
-│   ├── plan/                     # 計画書の保存先（テンプレ付き）
-│   └── report/                   # 実装レポートの保存先（テンプレ付き）
-├── 00_knowledge/                  # ブランド・事業のナレッジベース
-│   ├── README.md                 # ナビゲーション（全体構成・参照ガイド）
-│   ├── wado/                     # 個人ブランドの定義
-│   ├── hikari/                   # サブブランド（例）
-│   └── unionai/                  # 法人ブランド（例）
-├── assets/                       # 生成ファイルの保存先
-│   ├── images/                   # 生成画像・図解・サムネイル
-│   ├── exports/                  # PPTX・PDF・HTML等の書き出し
-│   └── screenshots/              # ブラウザスクリーンショット
-└── .gitignore
-```
-
-## 各ファイルの役割
-
-| ファイル | 役割 | 編集タイミング |
-|---------|------|-------------|
-| `CLAUDE.md` | プロジェクト全体の指示書。Claude が毎回読む | プロジェクト方針が変わったとき |
-| `.claude/rules/*.md` | 番号順に自動適用されるルール | 「毎回こうしてほしい」が増えたとき |
-| `.claude/agents/*.md` | 専門エージェント。Task toolで呼び出す | 専門的な分析・レビューが必要なとき |
-| `.claude/skills/*/SKILL.md` | `/スキル名` で呼べるコマンド | よくやる作業をスキル化したいとき |
-| `memory_bank/` | AIの記憶の代わりになる作業ログ | 大きめの作業の前後 |
-| `memory_bank/*/_TEMPLATE.md` | plan / report の書き方テンプレート | 参考にする（手動で書くとき） |
-| `00_knowledge/` | ブランド・事業・顧客のナレッジベース（上位定義層） | ブランド方針や事業構造が変わったとき |
-| `assets/` | スキルが生成した画像・PPTX・スクショの保存先 | 自動保存される。大きいファイルは .gitignore 検討 |
-| `settings.local.json` | 権限の自動許可設定 | ツール許可のポップアップが面倒なとき |
+## どこを見ればいいか
 
-## ルールファイルの詳細
+### workspace 全体を知りたいとき
 
-| # | ファイル | 内容 |
-|---|---------|------|
-| 01 | safety.md | 捏造禁止・個人情報保護・破壊的操作の事前確認 |
-| 03 | tool-tips.md | Claude Code のツール一覧・既知の制限・失敗時の対処法 |
-| 04 | memory-routing.md | 情報をどこに保存するかの判定フロー・矛盾検知 |
-| 05 | quality-check.md | 生成→確認→改善のセルフチェックループ |
-| 10 | skill-design-guide.md | スキルの2層構造（手順+判断軸）の設計原則 |
+1. `GEMINI.md`
+2. `.agents/rules/01-*.md` から `.agents/rules/10-*.md`
+3. `knowledge/README.md`
 
-> **02番が空いている理由**: `/setup-wizard` の Lv.2 で口調・キャラ設定ルールが自動生成されてここに入る。
+### Udemy 投稿を作りたいとき
 
-## 同梱エージェント一覧（7個）
+1. `projects/udemy/README.md`
+2. `.agents/workflows/udemy-post-create.md`
+3. `projects/udemy/contracts/output.md`
+4. `.agents/rules/20-udemy-voice.md`
+5. `.agents/rules/21-udemy-compliance.md`
+6. `projects/udemy/samples/winning-patterns.md`
+7. 必要な `projects/udemy/knowledge/*.md`
 
-エージェントは `.claude/agents/{名前}.md` に定義する。Claude Code の Task tool から呼び出せる専門家。
+ポイントは、`20-udemy-*` の rules は常時ルールではなく、**Udemy 投稿のときだけ読む補助ルール**だということです。
 
-### Brain（指揮官エージェント）
+## Udemy 投稿の作り方
 
-| ファイル | 役割 |
-|---------|------|
-| `brain.md` | 意思決定OS本体。5段階の思考階層・4ドメインの判断フレーム・7問フィルター・アンチパターン検出 |
-| `brain-knowledge.md` | 判断ナレッジベース。コンテンツ/ビジネス/チーム/戦略の蒸留済み判断材料 |
-| `brain-manual.md` | 使い方マニュアル。2つのモード・質問テンプレート・出力の読み方 |
+### 1. まず伝えること
 
-**2つのモード**:
-- **Advisor Mode**: 「これどうすべき？」→ 構造化された推奨を返す（前提確認・判断・根拠・トレードオフ・次の一手）
-- **Sparring Mode**: 「この方向性で合ってる？」→ 前提を疑い、盲点を突き、別のフレームを提示する
+Udemy 投稿を依頼するときは、最低でも次の 3 つがあると進めやすいです。
 
-> Brain は他のエージェント（Writer, Researcher 等）と組み合わせて使う。Brain が判断し、専門エージェントが実行する。
+- 媒体
+  - 例: X、LINE
+- 目的
+  - 例: 講座の認知、申込み、リマインド
+- CTA
+  - 例: 講座ページを見る、詳細を確認する
 
-### 専門エージェント
+### 2. 依頼のしかた
 
-| エージェント | ファイル | やること |
-|------------|---------|---------|
-| Security Reviewer | `security-reviewer.md` | コードのセキュリティ脆弱性をレビュー。インジェクション・認証・秘密情報の漏洩を検出 |
-| Code Reviewer | `code-reviewer.md` | コードの品質・パフォーマンス・保守性をレビュー。具体的な修正提案付き |
-| Researcher | `researcher.md` | Web・コードベースのリサーチ。競合分析、情報収集、事実検証 |
-| Writer | `writer.md` | 記事・ドキュメント・メール・マーケコピーの執筆。媒体別ガイドライン内蔵 |
-| Strategist | `strategist.md` | 意思決定パートナー（軽量版）。前提を疑い、盲点を突き、構造化された推奨を返す |
-| Weekly Coach | `weekly-coach.md` | 週次1on1の振り返りコーチ。対話で気づきを引き出し `memory_bank/` に記録 |
+こんな言い方で十分です。
 
-> **Brain vs Strategist の違い**: Brain は5段階の思考階層+4ドメインフレーム+ナレッジベース付きのフル装備。Strategist はシンプルな壁打ち用の軽量版。大きな意思決定は Brain、日常の相談は Strategist。
+- `UdemyのX投稿を作って。目的は認知、CTAは講座ページを見る。`
+- `Udemy講座のLINE告知文を作って。申込み促進が目的。`
+- `Udemy投稿として3案出してから、最後に1本へまとめて。`
 
-> **スキルとの違い**: スキルは `/コマンド名` で直接実行する「手順書」。エージェントは Task tool 経由で呼び出す「専門家」。
-> スキルは決まったワークフローを実行し、エージェントは状況に応じて判断する。
+`Udemy投稿` や `UdemyのX投稿` のように書くと、Udemy workflow に寄せやすくなります。
 
----
+### 3. どういう流れで作られるか
 
-## 同梱スキル一覧（19個）
+Udemy workflow では、基本的に次の流れで進みます。
 
-### 基本ツール
+1. brief を 1 文で整理する
+2. 媒体 / 目的 / CTA を固める
+3. 使う知識を選ぶ
+4. 切り口を 3 つ出す
+5. 投稿案を 3 本作る
+6. 1 本にまとめる
+7. QA で確認する
 
-| スキル | コマンド | やること |
-|--------|---------|---------|
-| Setup Wizard | `/setup-wizard` | 対話形式で初期設定。5レベルをクリアして環境構築 |
-| Plan | `/plan` | 作業前の計画書を作成 → `memory_bank/plan/` に保存 |
-| Report | `/report` | 作業後の実装レポートを作成 → `memory_bank/report/` に保存 |
-| Review | `/review` | コードや文章をレビュー。良い点・問題点・改善案をバランスよく |
-| Daily Log | `/daily-log` | 1日の作業ログ。開始時に予定、終了時に実績と学びを記録 |
-| Todo | `/todo` | タスクの追加・一覧・完了。`memory_bank/todo.md` で一元管理 |
-| Fix Issue | `/fix-issue` | GitHubイシューの調査→原因特定→修正→テストまでガイド |
+標準の出力は **3案 + 1本化 + QA結果** です。
 
-> `/plan` → 承認 → 作業 → `/report` のサイクルを回すと、セッションをまたいだ作業が安定する。
+## ファイルごとの役割
 
-### コンテンツ制作
+### root で使うもの
 
-| スキル | コマンド | やること |
-|--------|---------|---------|
-| Brainstorm | `/brainstorm` | 8つのフレームワーク（SCAMPER, JTBD等）でアイデアを5〜7個生成 |
-| Hook | `/hook` | H1〜H8の型でフック案を10個生成。心理メカニズムで評価 |
-| Content Extraction | `/content-extraction` | 長文コンテンツからSNS・動画・メルマガ用ネタを抽出 |
-| Reply Draft | `/reply-draft` | メッセージに対する返信を3パターン（丁寧/カジュアル/専門）で生成 |
+- `GEMINI.md`
+  - workspace 全体の共通ルール
+- `.agents/rules/01-10`
+  - 共通の出力方針
+- `.agents/workflows/`
+  - 業務ごとの進め方
+- `knowledge/`
+  - 複数業務で共通利用する知識
 
-### リサーチ・分析
+### Udemy で使うもの
 
-| スキル | コマンド | やること |
-|--------|---------|---------|
-| Competitive Watch | `/competitive-watch` | 競合の動向を4軸でスキャンし、差別化機会をレポート |
-| Customer Interview | `/customer-interview` | ペルソナになりきって質問。Pain/Desire/Objection/Triggerを深掘り |
-| SEO Optimize | `/seo-optimize` | キーワード分析〜見出し構造〜メタ情報まで一括SEO最適化 |
+- `projects/udemy/contracts/`
+  - 出力の型
+- `projects/udemy/samples/`
+  - 参考にする勝ち筋
+- `projects/udemy/output/`
+  - 完成した投稿案の保存先
+- `projects/udemy/benchmarks/`
+  - 比較・検証素材
+- `projects/udemy/knowledge/`
+  - 参照素材
 
-### プレゼン・スライド
+## どこを編集するか
 
-| スキル | コマンド | やること |
-|--------|---------|---------|
-| Presentation Builder | `/presentation-builder` | アイデアからスライド構成を設計（5つのテンプレート） |
-| Create PPTX | `/create-pptx` | python-pptxでPowerPointファイルを自動生成 |
+### よく編集する場所
 
-### ブラウザ自動化
+- `projects/udemy/contracts/`
+- `projects/udemy/samples/`
+- `projects/udemy/output/`
+- `projects/udemy/benchmarks/`
 
-| スキル | コマンド | やること |
-|--------|---------|---------|
-| Playwright CLI | `/playwright-cli` | ブラウザ操作を自動化。Webテスト・フォーム入力・スクショ・データ抽出 |
+### 基本は参照だけにする場所
 
-### 運用・改善
+- `knowledge/`
+- `projects/udemy/knowledge/`
 
-| スキル | コマンド | やること |
-|--------|---------|---------|
-| Coach | `/coach` | 週次の振り返り1on1。対話で気づきを引き出し記録 |
-| Skill Audit | `/skill-audit` | スキルの健全性を8項目×12.5点で採点し改善提案 |
+特に `projects/udemy/knowledge/` は講座台本や制作素材の保管層なので、普段の投稿生成では直接書き換えない前提です。
 
-## よくある質問
+## 出力はどこに保存されるか
 
-**Q: CLAUDE.md と rules/ の違いは？**
-A: CLAUDE.md はプロジェクト全体の指示。rules/ はテーマ別に分割したルール。
-   どちらも Claude に自動で読まれるが、rules/ のほうが整理しやすい。
+- repo 改修の plan / report:
+  - `memory_bank/plan/`
+  - `memory_bank/report/`
+- Udemy 投稿の成果物:
+  - `projects/udemy/output/`
+- 画像や書き出し:
+  - `assets/`
 
-**Q: skills/ にファイルを置いたのに認識されない**
-A: スキルは `.claude/skills/{スキル名}/SKILL.md` の構造が必須。
-   フォルダ名がスキル名になる。SKILL.md（大文字）であること。
+## AIレポートでまず見る場所
 
-**Q: settings.local.json って何？**
-A: Claude Code がツールを使うときの許可設定。
-   毎回「許可しますか？」と聞かれるのが面倒なら、ここで自動許可を設定できる。
+非エンジニアのメンバーは、root `memory_bank/report/` の report を開いたら、まず次の 3 つを見れば大丈夫です。
 
-**Q: このフォルダを git に入れていい？**
-A: `.claude/` フォルダは git に入れてOK（チームで共有できる）。
-   ただし `settings.local.json` と `CLAUDE.local.md` は個人設定なので `.gitignore` に入れる。
+- `まずこれだけ見ればOK`
+- `AIが見たもの`
+- `次回もっと良くするには`
 
-**Q: memory_bank/ って何？**
-A: AIの「記憶の代わり」。plan/ に計画書、report/ に実装レポートを残す。
-   AIはセッションをまたぐと過去の作業を忘れるので、ログを残すことで引き継ぎができる。
-   `/plan` と `/report` コマンドで自動生成できる。手動で書く場合は `_TEMPLATE.md` を参考に。
+ここを見ると、AI がどの rule / workflow / skill / knowledge を見て、なぜその出力にしたかを追いやすくなります。
 
-**Q: /plan や /report はいつ使う？**
-A: 「1セッションで終わらないかも」くらいの作業のとき。
-   小さいタスク（typo修正、1ファイル変更等）にはいらない。
-   目安: 3ファイル以上変更する or 30分以上かかりそう → plan を書く。
+## 迷ったときの考え方
 
-**Q: /review はコード以外にも使える？**
-A: 使える。文章、設定ファイル、SKILL.md、なんでもレビューできる。
-   レビュー対象の種類を自動判定して、適切な観点でフィードバックする。
-
-**Q: スキルが19個もあるけど、どれから使えばいい？**
-A: まずは基本の3つ: `/plan` → `/report` → `/review` のサイクルから。
-   次に自分の仕事に合うものを1つ選ぶ:
-   - 文章を書く人 → `/brainstorm` `/hook`
-   - 開発する人 → `/fix-issue` `/seo-optimize`
-   - マーケティングする人 → `/competitive-watch` `/customer-interview`
-   全部使う必要はない。必要なときに必要なものを使えばOK。
-
-**Q: agents/ と skills/ の違いは？**
-A: skills/ は `/コマンド名` で実行する「手順書」。決まったステップを上から順にやる。
-   agents/ は Task tool から呼び出す「専門家」。状況に応じて自分で判断して動く。
-   使い分け: 毎回同じ手順でやりたい作業 → スキル。状況判断が必要な分析・レビュー → エージェント。
-
-**Q: エージェントはどうやって呼び出す？**
-A: Claude Code の会話中に「セキュリティレビューして」「このコードをレビューして」等と頼めば、
-   Claude が自動的に適切なエージェントを Task tool で呼び出す。
-   自分でエージェントの `.md` ファイルを編集すれば、専門性や判断基準をカスタマイズできる。
-
-**Q: Brain エージェントはどう使い分ける？**
-A: 大きな意思決定（戦略判断、商品設計、方向性の決定等）は Brain。日常の軽い相談は Strategist。
-   Brain には `brain-knowledge.md` に自分の事業の判断材料を蓄積していくと、精度がどんどん上がる。
-   詳しくは `brain-manual.md` を参照。
-
-**Q: 00_knowledge/ って何？**
-A: ブランド・事業・顧客の「定義情報」を置く場所。
-   プロフィール、ブランドシステム、声のガイド、商品体系、顧客像などを構造化して保存する。
-   スキルやルールが参照する「上流の知識」。ここを整えると、AIの出力精度が格段に上がる。
-   ブランドごとにフォルダを分ける（個人ブランド / 法人 / サブブランド等）。
-
-**Q: スキルを自分でカスタマイズしていい？**
-A: どんどんやるべき。SKILL.md はただのMarkdownファイル。
-   自分のワークフローに合わせて、ステップを追加したり出力形式を変えたりできる。
-   `rules/10-skill-design-guide.md` を参考にすると質の高いスキルが作れる。
-
----
-
-## 実践Tips
-
-### セッションを使い分ける
-
-AIとの会話は用途によってセッション（チャット）を分けると精度が上がる。
-
-| 用途 | セッションの使い方 |
-|------|------------------|
-| **壁打ち・相談** | 考えるためのセッション。アイデア出し、方向性の検討に使う |
-| **実作業** | 正確に進めるためのセッション。確定した前提だけを持ち込む |
-
-なぜ分けるか:
-- 壁打ちは思考が揺れやすく、仮説や没案が多い
-- それが混ざるとAIが「どれが確定事項か」を判断しにくくなる
-- 作業用セッションはコンテキストを軽くすることで出力が安定する
-
-### 大きめのタスクの進め方
-
-```
-1. plan を書く（何をやるか・どう進めるか）
-   → memory_bank/plan/ に保存
-
-2. ユーザー（自分）が承認
-
-3. 実行
-
-4. report を書く（何をやったか・何が変わったか）
-   → memory_bank/report/ に保存
-```
-
-この「plan → 承認 → 実行 → report」のサイクルを回すと、AIとの協業が格段に安定する。
+- workspace 全体の話なら `GEMINI.md` を見る
+- 共通知識が必要なら `knowledge/README.md` を見る
+- Udemy 投稿なら `projects/udemy/README.md` と `udemy-post-create.md` を見る
+- 「このファイルを触っていいか分からない」ときは、まず `projects/udemy/README.md` の編集対象ルールを確認する
+- AI がどう判断したか知りたいときは、root `memory_bank/report/` を見る

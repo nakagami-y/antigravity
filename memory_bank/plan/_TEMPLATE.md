@@ -1,17 +1,32 @@
-# Plan: {タイトル}
-
-- **日付**: YYYY-MM-DD
-- **ステータス**: draft / approved / done
-
+---
+target_repo: gami-antigravity
+task_type: ""
+planned_rules: []
+planned_workflows: []
+planned_skills: []
+planned_knowledge: []
+status: draft
+report_required: true
 ---
 
-## ゴール
+# AI実行Plan: {タイトル}
 
-何を達成するか。1〜2文で。
+## まずこれだけ見ればOK
 
-## 背景
+- 依頼:
+- ゴール:
+- 完了条件:
 
-なぜこの作業が必要か。
+## AIが今回見る予定のもの
+
+- ルール:
+- workflow:
+- skill:
+- knowledge:
+
+## 実行方針
+
+- どういう順で進めるかを 2〜4 行で書く
 
 ## やること
 
@@ -19,20 +34,15 @@
 2. ...
 3. ...
 
-## やらないこと（スコープ外）
+## 保存先
+
+- 成果物:
+- plan: `memory_bank/plan/YYYY-MM-DD_内容.md`
+- report: `memory_bank/report/YYYY-MM-DD_内容.md`
+
+## リスク・前提
 
 - ...
 
-## 完了条件
-
-- [ ] ...
-- [ ] ...
-
-## リスク・懸念
-
-- ...
-
----
-
-> このテンプレートは `/plan` コマンドで自動生成できます。
-> 手動で書く場合はこのファイルをコピーしてください。
+> このテンプレートは AI 実行 plan の正本です。
+> 手動で書く場合もこの形式に合わせてください。

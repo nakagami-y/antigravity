@@ -1,6 +1,6 @@
 # assets/
 
-スキルやAIが生成したファイルの保存先。
+AntiGravity workspace で生成したバイナリ成果物の保存先。
 
 ## フォルダ構成
 

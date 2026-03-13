@@ -1,33 +1,75 @@
-# Report: {タイトル}
-
-- **日付**: YYYY-MM-DD
-- **対応する plan**: （あれば plan ファイル名）
-
+---
+target_repo: gami-antigravity
+task_type: ""
+used_rules: []
+used_workflows: []
+used_skills: []
+used_knowledge: []
+primary_issue_layer: instruction
+outcome: success
+friction_score: 1
+rework_needed: false
+linked_plan: ""
 ---
 
-## やったこと
+# AI実行レポート: {タイトル}
 
-何をしたかの概要。
+## まずこれだけ見ればOK
 
-## 変更内容
+- 依頼:
+- 結果:
+- 次回のコツ:
 
-| ファイル | 変更内容 |
-|---------|---------|
-| `path/to/file` | ... |
+## AIが見たもの
 
-## 判断した理由
+### 主に参照したファイル
 
-なぜこのアプローチにしたか。別案があれば何を検討して却下したか。
+- ...
 
-## 残タスク
+### 使ったルール / workflow / skill
 
-- [ ] ...
+- ルール:
+- workflow:
+- skill:
 
-## 学び・メモ
+## AIの判断
 
-次回以降に活かせる気づき。
+- この依頼をどう解釈したか
+- 何を優先したか
+- なぜこの出力や変更にしたか
 
----
+## 出力結果
 
-> このテンプレートは `/report` コマンドで自動生成できます。
-> 手動で書く場合はこのファイルをコピーしてください。
+- 成果物:
+- 変更ファイル:
+- QA / 確認結果:
+
+## 次回もっと良くするには
+
+- 追加であると良い情報:
+- おすすめの依頼文:
+- 再利用できる rule / workflow / skill 候補:
+
+## 診断ログ
+
+### blocking_factors
+
+- ...
+
+### root_cause
+
+- ...
+
+### quality assessment
+
+- instruction_quality:
+- rule_quality:
+- workflow_quality:
+- knowledge_quality:
+
+### suggested_fix
+
+- ...
+
+> このテンプレートは AI 実行診断ログの正本です。
+> 非エンジニアは最初の 3 セクションを見れば流れを把握できます。

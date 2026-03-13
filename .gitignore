@@ -1,6 +1,6 @@
-# Claude Code のローカル設定（個人用・gitに入れない）
-.claude/settings.local.json
-CLAUDE.local.md
+# AntiGravity のローカル設定（個人用・gitに入れない）
+.agents/local/settings.json
+GEMINI.local.md
 
 # OS
 .DS_Store
