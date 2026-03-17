@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(cd:*)",
+      "mcp__notion__API-retrieve-a-page",
+      "mcp__notion__API-get-block-children",
+      "mcp__notion__API-delete-a-block",
+      "mcp__notion__API-patch-block-children",
+      "mcp__notion__API-retrieve-a-block"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "notion",
+    "notion-distribution",
+    "asana",
+    "nanobanana",
+    "google-workspace"
+  ]
+}
