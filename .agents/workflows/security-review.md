@@ -12,6 +12,10 @@
 - インジェクション
 - 不要な公開
 
+## 保存
+
+- 人間から指示されたレビューは、開始前に root `memory_bank/plan/`、完了後に root `memory_bank/report/` を残す
+
 ## 出力
 
 - Issue

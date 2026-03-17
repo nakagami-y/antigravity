@@ -14,6 +14,7 @@ Udemy講座の投稿を作るための実務ディレクトリ。
 - `knowledge/` は参照用の素材層
 - 実際に投稿を作るときの正本は、このディレクトリ配下の `contracts/`, `samples/`, `output/`, `benchmarks/` と、workflow が読む補助 rules
 - AI 実行の plan / report はこのディレクトリではなく、root `memory_bank/` に統一する
+- 人間がエージェントへ Udemy 作業を指示したら、必ず開始前に plan、完了後に report を root `memory_bank/` に残す
 
 ## 参照順
 

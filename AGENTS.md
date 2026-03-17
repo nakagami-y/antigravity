@@ -27,12 +27,15 @@
 - 旧来の Claude 系構成はこの repo では使わない
 - root は共通層、業務固有の実務は `projects/<project>/` 側で受ける
 - Udemy 投稿は `projects/udemy/README.md` と `.agents/workflows/udemy-post-create.md` から入る
-- AI 作業で保存対象がある場合は root `memory_bank/plan/` と `memory_bank/report/` に記録する
+- 人間がエージェントへ指示した作業は、必ず root `memory_bank/plan/` と `memory_bank/report/` に記録する
+- これは手動オプションではなく必須導線として扱い、`/plan` `/report` の明示待ちにしない
 - AI 作業後は root report の `まずこれだけ見ればOK` と `AIが見たもの` を確認する
 
 ## 最初の確認順
 
 1. `GEMINI.md`
 2. `.agents/rules/01-*.md` から `.agents/rules/10-*.md`
-3. `knowledge/README.md`
-4. `projects/udemy/README.md`
+3. `.agents/rules/04-memory-routing.md`
+4. `.agents/rules/05-quality-check.md`
+5. `knowledge/README.md`
+6. 必要な `projects/<project>/README.md`

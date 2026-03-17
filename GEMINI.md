@@ -19,9 +19,10 @@ Google AntiGravity 用の workspace 契約。
 
 1. この `GEMINI.md`
 2. `.agents/rules/01-*.md` から `.agents/rules/10-*.md`
-3. `knowledge/README.md`
-4. 必要な `projects/<project>/README.md`
-5. 必要時のみ `.agents/workflows/*.md` と `.agents/skills/*/SKILL.md`
+3. `.agents/rules/04-memory-routing.md` と `.agents/rules/05-quality-check.md`
+4. `knowledge/README.md`
+5. 必要な `projects/<project>/README.md`
+6. 必要時のみ `.agents/workflows/*.md` と `.agents/skills/*/SKILL.md`
 
 ## Workspace Contracts
 
@@ -40,17 +41,20 @@ Google AntiGravity 用の workspace 契約。
 - 数字・引用・実績・仕様は捏造しない
 - 時間で変わる情報は取得日を添える
 - 破壊的操作、外部公開、機密情報操作は事前確認する
-- AI 作業でファイル変更、成果物生成、重要な判断を伴う場合は、開始前に root `memory_bank/plan/`、完了後に root `memory_bank/report/` を残す
-- 雑談、単純 Q&A、保存対象がない軽微な確認だけは plan / report の対象外にしてよい
+- 人間がエージェントへ指示した作業は、開始前に root `memory_bank/plan/`、完了後に root `memory_bank/report/` を必ず残す
+- ユーザーが `/plan` や `/report` を明示しなくても自動で実行する
+- plan / report がないまま作業を進めたり終えたりしない
 
 ## Project Routing
 
 - Udemy 投稿生成:
   - `.agents/workflows/udemy-post-create.md`
+- それ以外の `projects/<project>/` 作業:
+  - まず対象 `README.md` を読み、root `memory_bank/plan/` を切ってから進める
 - 共通知識:
   - `knowledge/README.md`
 - 実務出力:
-  - `projects/<project>/output/`
+  - `projects/<project>/`
 
 ## Output Routing
 
