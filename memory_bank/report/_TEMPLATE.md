@@ -5,11 +5,8 @@ used_rules: []
 used_workflows: []
 used_skills: []
 used_knowledge: []
-primary_issue_layer: instruction
-outcome: success
-friction_score: 1
-rework_needed: false
 linked_plan: ""
+outcome: success
 ---
 
 # AI実行レポート: {タイトル}
@@ -18,7 +15,6 @@ linked_plan: ""
 
 - 依頼:
 - 結果:
-- 次回のコツ:
 
 ## AIが見たもの
 
@@ -44,32 +40,5 @@ linked_plan: ""
 - 変更ファイル:
 - QA / 確認結果:
 
-## 次回もっと良くするには
-
-- 追加であると良い情報:
-- おすすめの依頼文:
-- 再利用できる rule / workflow / skill 候補:
-
-## 診断ログ
-
-### blocking_factors
-
-- ...
-
-### root_cause
-
-- ...
-
-### quality assessment
-
-- instruction_quality:
-- rule_quality:
-- workflow_quality:
-- knowledge_quality:
-
-### suggested_fix
-
-- ...
-
-> このテンプレートは AI 実行診断ログの正本です。
-> 非エンジニアは最初の 3 セクションを見れば流れを把握できます。
+> このテンプレートは AI 実行 report の正本です。
+> 非エンジニアは最初の 2 セクションを見れば流れを把握できます。
