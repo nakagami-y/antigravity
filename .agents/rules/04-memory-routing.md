@@ -28,7 +28,7 @@
 
 ## 実行ゲート
 
-- 人間がエージェントへ指示したら、作業開始前に root `memory_bank/plan/` を作る
+- 人間から実作業の指示を受けたら、作業開始前に root `memory_bank/plan/` を作る
 - 作業が終わったら、root `memory_bank/report/` を作るまで完了扱いにしない
 - これは `/plan` `/report` の手動トリガー待ちにせず、自動で実行する
 - plan / report の保存先が不明なまま project 配下へ新しいログ置き場を増やさない
@@ -46,6 +46,6 @@
 - `GEMINI.md` が肥大化していないか
 - `knowledge/` と `projects/udemy/knowledge/` の責務が混ざっていないか
 - `memory_bank/plan/` に古い計画が放置されていないか
-- `memory_bank/report/` に AI 実行診断ログが残っているか
+- `memory_bank/report/` に AI 実行ログが残っているか
 - project 配下に plan / report の新規保存先を増やしていないか
 - 新しい `projects/<project>/` が増えたのに root 側の plan / report 導線が落ちていないか

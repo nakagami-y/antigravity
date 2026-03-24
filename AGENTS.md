@@ -27,9 +27,9 @@
 - 旧来の Claude 系構成はこの repo では使わない
 - root は共通層、業務固有の実務は `projects/<project>/` 側で受ける
 - Udemy 投稿は `projects/udemy/README.md` と `.agents/workflows/udemy-post-create.md` から入る
-- 人間がエージェントへ指示した作業は、必ず root `memory_bank/plan/` と `memory_bank/report/` に記録する
+- 人間から受けた実作業の指示は、原則として必ず root `memory_bank/plan/` と `memory_bank/report/` に記録する
 - これは手動オプションではなく必須導線として扱い、`/plan` `/report` の明示待ちにしない
-- AI 作業後は root report の `まずこれだけ見ればOK` と `AIが見たもの` を確認する
+- AI 作業後は root report の `まずこれだけ見ればOK` と `AIが見たもの` を先に確認する
 
 ## 最初の確認順
 

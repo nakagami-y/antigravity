@@ -41,7 +41,7 @@ Google AntiGravity 用の workspace 契約。
 - 数字・引用・実績・仕様は捏造しない
 - 時間で変わる情報は取得日を添える
 - 破壊的操作、外部公開、機密情報操作は事前確認する
-- 人間がエージェントへ指示した作業は、開始前に root `memory_bank/plan/`、完了後に root `memory_bank/report/` を必ず残す
+- 人間から受けた実作業の指示は、開始前に root `memory_bank/plan/`、完了後に root `memory_bank/report/` を必ず残す
 - ユーザーが `/plan` や `/report` を明示しなくても自動で実行する
 - plan / report がないまま作業を進めたり終えたりしない
 
